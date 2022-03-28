@@ -3,54 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShipBattle.Components;
+using ShipBattle.Components.Weapons;
 
 namespace ShipBattle
 {
-    class Ship
+    internal class Ship
     {
-        List<Component> componentList = new();
+        private string _name;
 
-        public Ship()
+        public List<Component> componentList = new();
+        public string Name { get { return _name; } }
+
+        public Ship(string name)
         {
-
+            // Initialize private variables
+            _name = name;
         }
 
-        public void AddComponent(ComponentType type, int amount)
+        private List<Component> GetComponentOfTypeList<T>() where T : Component
         {
-            for (int i = 0; i < amount; i++)
-            {
-                componentList.Add(Component.CreateComponentOfType(type));
-            }
-        }
-
-        public int GetComponentOfTypeCount(ComponentType type)
-        {
-            return GetComponentOfTypeList(type).Count;
-        }
-
-        private List<Component> GetComponentOfTypeList(ComponentType type)
-        {
-            List<Component> componentOfTypeList = new();
-
+            List<Component> components = new();
             foreach (Component component in componentList)
             {
-                if (component.Type == type)
+                Type componentType = component.GetType();
+                if (componentType.BaseType == typeof(T))
                 {
-                    componentOfTypeList.Add(component);
+                    components.Add(component);
                 }
             }
 
-            return componentOfTypeList;
+            return components;
         }
 
-        public int GetTotalDamage(ComponentType type)
+        /// <returns>Total damage of all weapons on the ship.</returns>
+        public int GetTotalDamage()
         {
             int totalDmg = 0;
-
-            foreach (Weapon component in componentList)
+            foreach (Weapon weapon in GetComponentOfTypeList<Weapon>())
             {
-                if (component.Type == type)
-                    totalDmg += component.Damage;
+                totalDmg += weapon.Damage;
             }
 
             return totalDmg;

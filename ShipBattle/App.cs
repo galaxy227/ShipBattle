@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShipBattle.Components.Weapons;
 
 namespace ShipBattle
 {
-    class App
+    internal class App
     {
         public App()
         {
@@ -15,12 +16,12 @@ namespace ShipBattle
 
         public void Run()
         {
-            Ship ship1 = new();
+            Ship ship1 = new("Starfighter");
 
-            ship1.AddComponent(ComponentType.Laser, 25);
-            ship1.AddComponent(ComponentType.Missile, 25);
+            for (int i = 0; i < 10; i++)
+                ship1.componentList.Add(new Laser(10, 10, 10, 10, 10));
 
-            ship1.GetTotalDamage(ComponentType.Laser);
+            Console.WriteLine($"{ship1.Name} total damage: {ship1.GetTotalDamage()}");
         }
     }
 }

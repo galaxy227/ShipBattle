@@ -21,6 +21,11 @@ namespace ShipBattle
             _name = name;
         }
 
+        public void AddComponent(Component component)
+        {
+            componentList.Add(component);
+        }
+
         private List<Component> GetComponentOfTypeList<T>() where T : Component
         {
             List<Component> components = new();

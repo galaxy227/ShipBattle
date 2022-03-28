@@ -19,7 +19,7 @@ namespace ShipBattle
             Ship ship1 = new("Starfighter");
 
             for (int i = 0; i < 10; i++)
-                ship1.componentList.Add(new Laser(10, 10, 10, 10, 10));
+                ship1.AddComponent(new Laser(10, 10, 10, 10, 10));
 
             Console.WriteLine($"{ship1.Name} total damage: {ship1.GetTotalDamage()}");
         }

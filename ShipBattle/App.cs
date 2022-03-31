@@ -15,12 +15,23 @@ namespace ShipBattle
 
         public void Run()
         {
-            Ship ship1 = new();
+            Ship ship1 = new("Red Hand");
+            ship1.AddComponent(ComponentType.Laser, 1);
+            ship1.AddComponent(ComponentType.Missile, 1);
+            ship1.AddComponent(ComponentType.Shield, 10);
+            ship1.AddComponent(ComponentType.Armor, 10);
+            ship1.AddComponent(ComponentType.Engine, 10);
 
-            ship1.AddComponent(ComponentType.Laser, 25);
-            ship1.AddComponent(ComponentType.Missile, 25);
+            Ship ship2 = new("Blue Hand");
+            ship2.AddComponent(ComponentType.Laser, 1);
+            ship2.AddComponent(ComponentType.Missile, 1);
+            ship2.AddComponent(ComponentType.Shield, 10);
+            ship2.AddComponent(ComponentType.Armor, 10);
+            ship2.AddComponent(ComponentType.Engine, 10);
 
-            ship1.GetTotalDamage(ComponentType.Laser);
+            Combat.SimulateCombat(ship1, ship2);
+
+            Console.WriteLine();
         }
     }
 }

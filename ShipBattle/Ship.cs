@@ -8,11 +8,14 @@ namespace ShipBattle
 {
     class Ship
     {
-        List<Component> componentList = new();
+        public List<Component> componentList = new();
 
-        public Ship()
+        public string Name;
+        public int Position;
+
+        public Ship(string name)
         {
-
+            Name = name;
         }
 
         public void AddComponent(ComponentType type, int amount)
@@ -23,7 +26,7 @@ namespace ShipBattle
             }
         }
 
-        public int GetComponentOfTypeCount(ComponentType type)
+        private int GetComponentOfTypeCount(ComponentType type)
         {
             return GetComponentOfTypeList(type).Count;
         }
@@ -43,17 +46,17 @@ namespace ShipBattle
             return componentOfTypeList;
         }
 
-        public int GetTotalDamage(ComponentType type)
+        private int GetDamageOfType(ComponentType type)
         {
-            int totalDmg = 0;
+            int damage = 0;
 
             foreach (Weapon component in componentList)
             {
                 if (component.Type == type)
-                    totalDmg += component.Damage;
+                    damage += component.Damage;
             }
 
-            return totalDmg;
+            return damage;
         }
     }
 }

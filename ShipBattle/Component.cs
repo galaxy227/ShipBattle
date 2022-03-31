@@ -14,7 +14,7 @@ namespace ShipBattle
 
         public int Cost { get { return _cost; } }
         public int Size { get { return _size; } }
-        public int Health { get { return _health; } }
+        public int Health { get { return _health; } set { Health = value; } }
 
         protected Component(int cost, int size, int health)
         {

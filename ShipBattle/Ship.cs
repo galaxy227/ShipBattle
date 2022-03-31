@@ -14,6 +14,7 @@ namespace ShipBattle
 
         public List<Component> componentList = new();
         public string Name { get { return _name; } }
+        public int Position;
 
         public Ship(string name)
         {

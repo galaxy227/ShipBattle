@@ -32,7 +32,7 @@ namespace ShipBattle
             ship2.AddComponent(new Engine(10, 10, 10, 10), 10);
 
             round1.SimulateCombat(ship1, ship2);
-
+          
             Console.WriteLine();
         }
     }

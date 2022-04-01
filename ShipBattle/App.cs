@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ShipBattle.Components.Weapons;
+﻿using ShipBattle.Components;
 using ShipBattle.Components.Defenses;
-using ShipBattle.Components;
+using ShipBattle.Components.Weapons;
+using System;
 
 namespace ShipBattle
 {
     internal class App
     {
+        Round round1 = new();
+        public static Random RandomGenerator = new();
+
         public App()
         {
 
@@ -19,21 +18,20 @@ namespace ShipBattle
         public void Run()
         {
             Ship ship1 = new("Red Hand");
-            //ship1.AddComponent(ComponentType.Laser, 1);
-            //ship1.AddComponent(ComponentType.Missile, 1);
-            //ship1.AddComponent(ComponentType.Shield, 10);
-            //ship1.AddComponent(ComponentType.Armor, 10);
-            //ship1.AddComponent(ComponentType.Engine, 10);
-            ship1.AddComponent(new Laser(10, 10, 10, 10, 10));
+            ship1.AddComponent(new Laser(10, 10, 10, 10, 10), 1);
+            ship1.AddComponent(new Missile(10, 10, 10, 10, 10), 1);
+            ship1.AddComponent(new Shield(10, 10, 10, 10, 10), 10);
+            ship1.AddComponent(new Armor(10, 10, 10, 10, 10), 10);
+            ship1.AddComponent(new Engine(10, 10, 10, 10), 10);
 
             Ship ship2 = new("Blue Hand");
-            //ship2.AddComponent(ComponentType.Laser, 1);
-            //ship2.AddComponent(ComponentType.Missile, 1);
-            //ship2.AddComponent(ComponentType.Shield, 10);
-            //ship2.AddComponent(ComponentType.Armor, 10);
-            //ship2.AddComponent(ComponentType.Engine, 10);
+            ship2.AddComponent(new Laser(10, 10, 10, 10, 10), 1);
+            ship2.AddComponent(new Missile(10, 10, 10, 10, 10), 1);
+            ship2.AddComponent(new Shield(10, 10, 10, 10, 10), 10);
+            ship2.AddComponent(new Armor(10, 10, 10, 10, 10), 10);
+            ship2.AddComponent(new Engine(10, 10, 10, 10), 10);
 
-            Combat.SimulateCombat(ship1, ship2);
+            round1.SimulateCombat(ship1, ship2);
 
             Console.WriteLine();
         }

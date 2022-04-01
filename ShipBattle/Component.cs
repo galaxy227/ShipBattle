@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShipBattle
+﻿namespace ShipBattle
 {
     internal class Component
     {
@@ -14,7 +8,7 @@ namespace ShipBattle
 
         public int Cost { get { return _cost; } }
         public int Size { get { return _size; } }
-        public int Health { get { return _health; } set { Health = value; } }
+        public int Health { get { return _health; } set { _health = value; } }
 
         protected Component(int cost, int size, int health)
         {
